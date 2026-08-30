@@ -1,0 +1,37 @@
+observability:
+  alpha: 0.05
+  target_power: 0.80
+  posterior_draws: 200
+  quadrature_nodes: 64
+  report_quantile: 0.05
+
+effect_prior:
+  source: fitted
+  fixed_fallback:
+    expression_log2fc: 1.0
+    ase_ratio_delta: 0.15
+    splice_psi_delta: 0.10
+
+evidence:
+  log_base: 2.08
+  cap_positive_points: 8.0
+  cap_negative_points: 4.0
+
+abstention:
+  target_risk: 0.05
+  calibration_fraction: 0.20
+
+model:
+  hidden_dim: 128
+  heads: 4
+  layers: 3
+  residual_tau: 0.5
+  enforce_nonneg_gate: true
+
+training:
+  seed: 20260806
+  stages: [reference, pretrain, adapt, rank, counterfactual, calibrate]
+  optimizer: adamw
+  lr: 0.0003
+  weight_decay: 0.01
+  batch_graphs: 16

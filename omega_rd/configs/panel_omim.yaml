@@ -1,0 +1,3 @@
+panel:
+  source: omim
+  note: "Production panel is generated from a pinned OMIM/Ensembl release; do not hand-edit symbols here."
